@@ -49,5 +49,5 @@ node default {
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    content => "This is the test file lab 7.1\n");
+    content => "This is the test file lab 7.1\n",
   }
