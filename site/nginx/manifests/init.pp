@@ -36,6 +36,12 @@ class nginx {
     require => Package['nginx'],
     notify  => Service['nginx'],
   }
+  file { '/etc/nginx':
+    ensure => directory,
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0755',
+  }
   file { '/etc/nginx/conf.d':
     ensure => directory,
     owner  => 'root',
