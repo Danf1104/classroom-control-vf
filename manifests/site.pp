@@ -61,6 +61,14 @@ if $::virtual != 'physical' {
   notify { "This is a ${vmname} virtual machine.": }
 }
   
+user { 'admin':
+  ensure => present,
+}
+
+class { 'aliases':
+  admin => 'admin',
+  require => User['admin'],
+}
   
 exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
   path => '/usr/bin:/usr/local/bin',
