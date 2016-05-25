@@ -55,6 +55,13 @@ node default {
   #  mode    => '0644',
   #  content => "This is the test file lab 7.1\n",
   #}
+  
+if $::virtual != 'physical' {
+  $vmname = capitalize($::virtual)
+  notify { "This is a ${vmname} virtual machine.": }
+}
+  
+  
 exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
   path => '/usr/bin:/usr/local/bin',
   creates => '/etc/motd',
